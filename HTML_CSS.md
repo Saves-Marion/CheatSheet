@@ -263,6 +263,8 @@ Block: retour à la ligne.
 
 Inline dans un block à la suite les uns des autres.
 
+-------------------
+
 **Flexbox**
 
 Parent
@@ -295,6 +297,8 @@ flex-shrink: nb positif
 *alignement vertical*
 align-self: auto | flex-start | flex-end | center | baseline | stretch;
 
+-------------------
+
 #### Position
 
 Fixed: va garder sa position dans l'ecran meme si on scroll, défini à partir du plus gros container. 
@@ -302,6 +306,8 @@ Fixed: va garder sa position dans l'ecran meme si on scroll, défini à partir d
 Relative: va se déplacer par rapport à sa place de base.
 
 Absolute: se déplace par rapport à son parent.
+
+-------------------
 
 #### Float/Clear
 
