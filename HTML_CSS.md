@@ -19,6 +19,9 @@
     * Propriété tableaux
     * Autres
 * A savoir faire
+  * Display/Flexbox
+  * Position
+  * Float/Clear
 * Sources
 
 ## Code type HTML
@@ -42,9 +45,19 @@
 | `<head>`       | En-tête, info gé | 
 | `<body>`       | Corps page       | 
 | `<meta    />`  |                  | 
-| `<linkvvvv />` | Lien             | 
+| `<link    />` | Lien             | 
 | `<script>`     | Code javascript  | 
 | `<style>`      | Code CSS         | 
+
+**meta**
+
+*En général:* `<meta name|http-equiv="Mot-clé" content="Valeur" />`
+
+*TypeDoc et Encodage:* `<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta charset="utf-8">`
+
+*Description page:* `<meta name="description" content="Pour recherche Google" />`
+
+*Robot indexer ou page page etc*
 
 ## Balises
 ### HTML
@@ -152,6 +165,8 @@
 
 ### CSS
 
+**Selectionner un id #id{} et class .class{}**
+
 #### Propriété mise en forme
 
 | Balise               | Description                | Valeur                                         | 
@@ -241,6 +256,58 @@
 | cursor       | Curseur souris    |crosshair, default, help, move, pointer, progress, text, wait, e-resize, ne-resize, auto... | 
 
 ## A savoir faire
+
+#### Display/Flexbox
+
+Block: retour à la ligne.
+
+Inline dans un block à la suite les uns des autres.
+
+**Flexbox**
+
+Parent
+
+display: flex;
+
+flex-direction: row (gauche à droite), column (haut en bas), truc-reverse; (est-ce que les éléments vont être en ligne ou en colonne)
+
+flex-wrap: nowrap(1ligne), wrap(ligne de top à bottom avec -reverse);
+
+*position horizontale*
+justify-content: flex-start(collé le plus à gauche container), flex-end, center, space-between(plus d'espace entre item touche à g et à d), space-around/evenly(espace g et d egal plus grand possible);
+
+*position verticale*
+align-item: flex-start(collé haut), flex end, center, strech (etire touche haut et bas), baseline;
+
+*position block, ligne multiple*
+align-content: même que align item;
+
+-------------------
+
+Enfants
+
+order: +petit gauche haut +grand bas droite
+
+flex-grow: 4 = 4fois plus de place qu'un1;
+
+flex-shrink: nb positif
+
+*alignement vertical*
+align-self: auto | flex-start | flex-end | center | baseline | stretch;
+
+#### Position
+
+Fixed: va garder sa position dans l'ecran meme si on scroll, défini à partir du plus gros container. 
+
+Relative: va se déplacer par rapport à sa place de base.
+
+Absolute: se déplace par rapport à son parent.
+
+#### Float/Clear
+
+Float-right fait en sorte que l'element soit à la droite de son container, les restes des éléments se disposent autour de lui normalement.
+
+Clear-right fait en sorte que la droite de l'élément flottant ne contienne rien. 
 
 ## Sources
 OpenClassroom
