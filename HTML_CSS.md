@@ -11,11 +11,18 @@
     * Section
     * Générique
   2.CSS
+    * Propriété mise en forme
+    * Propriété couleur/fond
+    * Propriété boîte
+    * Propriété positionnement/affichage
+    * Propriété listes
+    * Propriété tableaux
+    * Autres
 * A savoir faire
 * Sources
 
 ## Code type HTML
-
+```
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,6 +34,7 @@
     //son code ici
     </body>
 </html>
+```
 
 | Balise         | Description      | 
 |:--------------:|:----------------:| 
@@ -143,6 +151,94 @@
 
 
 ### CSS
+
+#### Propriété mise en forme
+
+| Balise               | Description                | Valeur                                         | 
+|:--------------------:|:--------------------------:|:----------------------------------------------:|  
+| font-family          | Nom Police                 | serif, police 1                                | 
+| @font-face           | Police perso               | nom+source                                     | 
+| font-size            | Taille text                | 1em,10px,100%                                  | 
+| font-weight          | Gras                       | bold, normal                                   | 
+| font-style           | Italique                   | italic, oblique, normal                        | 
+| font-variant         | Petites capitales          | small-caps, normal                             | 
+| font                 | tous hors family           |                                                | 
+|:--------------------:|:--------------------------:|:----------------------------------------------:| 
+| text-decoration      | Effet ligne                | underline, overline, line-through, blink, none | 
+| text-transformation  | Capitales                  | capitalize,lowercase,uppercase                 |  
+| text-shadow          | Ombre                      | horipx vertipx fondupx couleur                 | 
+|:--------------------:|:--------------------------:|                                                |  
+| text-align           |  Alignement hori           | left,center,right,justify                      | 
+| vertical-align       | Alignement verti*          | baseline, middle, sub, super, top, bottom      |  
+| line-height          | Hauteur ligne              | 10px,100%,normal                               |  
+| text-indent          | Alinea                     | px                                             |  
+| white-space          | Césure                     | pre,nowrap,normal                              | 
+| word-wrap            | Césure forcé               | break-word,normal                              | 
+
+*(si tableau ou inlign-block)
+
+#### Propriété couleur/fond
+
+| Balise                  | Description                | Valeur                                      | 
+|:-----------------------:|:--------------------------:|:-------------------------------------------:|  
+| color                   | Couleur text               | nom, rgb(0,254,0),rgba(0,0,0,100), #FFFFFF  | 
+| background-color        | Couleur fond               |                                             | 
+| background-image        | Image fond                 | url('img.jpg')                              | 
+| backgroung-attachment   | Fixe                       | fixed,scroll                                | 
+| background-repeat       | Répétition                 | repeat-x,repeat-y,no-repeat,repeat          | 
+| background-position     | Position                   | (x,y),top,center,bottom,left,right          | 
+| opacity                 | Transparence               | 0.5                                         | 
+
+#### Propriété boîte
+
+| Balise                                  | Description                | Valeur                                              | 
+|:---------------------------------------:|:--------------------------:|:---------------------------------------------------:|  
+| width / min-width / max-width           | Largeur /min/max           | 100px,80%                                           | 
+| height / min-height / max-height        | Hauteur  /min/max          | 100px,80%                                           | 
+| margin / margin-top/left/right/bottom   | Marge extérieur            | 5px 5px 5px 5px / 5px                               | 
+| padding                                 | Marge interne              | fixed,scroll                                        | 
+| border-width                            | Epaisseur                  | 5px                                                 | 
+| border-color                            | Couleur                    |                                                     | 
+| border-style                            | Type                       |solid,dotted,dashed,double,groove,ridge,inset,outset | 
+| border-radius                           | Arrondi                    |5px                                                  | 
+| border-shadow                           | Ombre                      | horipx,vertipx,fondupx,couleur                      | 
+
+#### Propriété positionnement/affichage
+
+| Balise                 | Description                              | Valeur                                                   | 
+|:----------------------:|:----------------------------------------:|:--------------------------------------------------------:|  
+| display                | Type element                             | block, inline, inline-block, table, table-cell, none...  | 
+| visibility             | Visibilité                               | visible, hidden                                          | 
+| clip                   | Affichage une part                       | rect (hautpx, droitepx, baspx, gauchepx)                 | 
+| overflow               | Dépassement                              | 	auto, scroll, visible, hidden                          | 
+| float                  | Flottant                                 | left, right, none                                        | 
+| clear                  | Arret d'un flottant                      | left, right, both, none                                  | 
+| position               | Positionnement                           |relative, absolute, static                                | 
+| top/bottom/left/right  | Position par rapport                     |5px                                                       | 
+| z-index                | Ordre affichage, +grand + devant/dessus  | 10                                                       | 
+
+#### Propriété listes
+
+| Balise                 | Description            | Valeur                                                                                  | 
+|:----------------------:|:----------------------:|:---------------------------------------------------------------------------------------:|  
+| list-style-type        | Type liste             |disc, circle, square, decimal, lower-roman, upper-roman, lower-alpha, upper-alpha, none  | 
+| list-style-position    | Position en retrait    | inside, outside                                                                         | 
+| list-style-image       | Puce personnalisé      | url('puce.png')                                                                         | 
+| list-style             | Combinaison            |                                                                                         | 
+
+#### Propriété tableaux
+
+| Balise                 | Description                 | Valeur             | 
+|:----------------------:|:---------------------------:|:------------------:|  
+| border-collapse        | Fusion bordure              | collapse, separate | 
+| empty-cells            | Affichage cellule vide      | hide, show         | 
+| caption-side           | Position titre              | bottom, top        | 
+
+#### Autres
+
+| Balise       | Description       | Valeur                                                                                     | 
+|:------------:|:-----------------:|:------------------------------------------------------------------------------------------:|  
+| cursor       | Curseur souris    |crosshair, default, help, move, pointer, progress, text, wait, e-resize, ne-resize, auto... | 
 
 ## A savoir faire
 
