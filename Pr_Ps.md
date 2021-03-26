@@ -1,9 +1,13 @@
-# Première Pro - After Effect - Photoshop
+# Première Pro - Photoshop
 
 ## Sommaire
 * Première Pro
-* After effect
+  1. Command Shortcuts
+  2. Clipboard Shortcuts
+  3. Tool Shortcuts
+  4. Navigation Shortcuts
 * Photoshop
+* Sources
 
 ## Première pro
 
@@ -88,7 +92,10 @@ Helpful for reviewing your video projects.
 | Shuttle Right	            | L	              | L           | 
 | Snap (Turn On/Off)	      | S	              | S           | 
 
-## After effect
-
 ## Photoshop
+https://www.webfx.com/internet-marketing/photoshop-cheat-sheet/
 
+## Sources
+
+https://motionarray.com/learn/premiere-pro/ultimate-list-of-adobe-premiere-keyboard-shortcuts/
+https://www.webfx.com/internet-marketing/photoshop-cheat-sheet/
