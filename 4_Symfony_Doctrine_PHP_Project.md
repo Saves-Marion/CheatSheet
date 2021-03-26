@@ -29,6 +29,8 @@
 * Bootstrap
   * Configuration
   * Menus
+* Upload images
+* Form dynamique AJAX
 * Source
 
 ## Installation
@@ -528,6 +530,14 @@ Dans templates/base.html.twig
 
 ```
 
+## Upload images
+
+Dispo cours
+ 
+## Form dynamique AJAX
+ 
+Dispo cours
+ 
 ## Source
 
 Cours: Architectures et applications web
