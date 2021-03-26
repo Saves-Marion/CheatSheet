@@ -34,7 +34,7 @@ Ou
 
 Modifier angular-cli.json ou angular.json
 
-`
+```
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -53,4 +53,4 @@ Modifier angular-cli.json ou angular.json
               "node_modules/lien_utile.js"
             ]
           },
-`
+```
