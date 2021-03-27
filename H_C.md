@@ -21,11 +21,15 @@
 
 *Quitter*  :  `q` ou `quit`
 
+----
+
 **Executer**
 
 *Lancer*  :  `r` ou `run' ou 'r arg1 arg2 ...`
 
 *Selectionner args pour prochain run*  :  `set arg1 arg2 ...`
+
+----
 
 **Etat d'un processus**
 
@@ -40,6 +44,8 @@
 *Select stack frame*  :  `frame nom`
 
 *Afficher code autour stack frame select*  :  `l` ou `list`
+
+----
 
 **Execution processus**
 
@@ -56,6 +62,8 @@ position` ou `break position`
 
 *Executer jusqu'au prochain breakpoint*  :  `c` ou `continue`
 
+----
+
 **Assembleur**
 
 *Afficher code assembleur*  :  `disassemble [function]`
@@ -63,6 +71,8 @@ position` ou `break position`
 *Afficher valeur registres*  :  `info registers`
 
 *Afficher valeur d'un registre*  :  `p $[register]`
+
+----
 
 **Reverse debugging**
 
@@ -73,6 +83,8 @@ position` ou `break position`
 *Equiv step next continue en arrière*  :  `rs` ou `rn` ou `rc` ou `reverse-step` ou ...
 
 *Utilisation watchpoint*  :  `set can-use-hw-watchpoints 0`
+
+----
 
 **Autres**
 
