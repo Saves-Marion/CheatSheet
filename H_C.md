@@ -3,6 +3,7 @@
 ##  Sommaire
 * Installation
 * Commandes utiles
+* Cours
 * Sources
 
 ## Installation
@@ -95,6 +96,11 @@ position` ou `break position`
 *Attache GDB au processus de pid et detache*  :  `attach [pid]` ou `detach`
 
 *Affecter value à var*  :  `set env [var]=[value]`
+
+
+## Cours
+
+Le C est un langage bas niveau (= peu d'abstraction par rapport processeur).
 
 ## Source
 
