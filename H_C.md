@@ -2,6 +2,7 @@
 
 ##  Sommaire
 * Installation
+* Compilation
 * Commandes utiles
 * Cours
 * Sources
@@ -13,6 +14,13 @@
 4. valgrind `sudo apt-get install valgrind`
 5. ar, nm, objdump, readelf `sudo apt-get install binutils`
 6. libc `sudo apt-get install libc-dev-bin`
+
+## Compilation
+```
+$ gcc hello_world.c -o hello_world -Wall -Werror
+$ ./hello_world
+Hello World!
+```
 
 ## Commandes utiles
 
@@ -101,6 +109,53 @@ position` ou `break position`
 ## Cours
 
 Le C est un langage bas niveau (= peu d'abstraction par rapport processeur).
+
+Structure d'un programme:
+```
+# include < stdio .h >
+# include < stdlib .h >
+
+
+
+struct nom_de_la_structure {      //sous-types hétérogènes
+type1 nom_du_champs1;
+type2 nom_du_champs2;
+...
+};
+struct nom_de_la_structure z1, z2, z3;    //z1.nom_du_champs1 pour accéder à ça valeur et nom_du_champs1.z pour accéder à son parent
+struct nom_de_la_structure i = { 0, 1 };  //initialisation
+
+
+//Tableau attention pas accès taille, erreur silencieuse si dépassement taille
+//Seul passage par rRéférences
+type_des_elements nom_de_la_variable[taille_du_tableau];  //accès el 3 avec x[3]
+type_element nom_variable[taille] = { e0, e1, e2, ... };
+
+
+
+int main ( int argc , char ** argv ) {
+      int entier;
+      unsigned int ent;
+      short short;
+      long long;
+      float flottant;   //4octets
+      double double;    //8octets
+      char chaine;
+      char yes[] = "yes";     //char yes[] = { ’y’, ’e’, ’s’, ’\0’ };
+      int nb_octet = sizeof(entier);
+      
+      for(i=0; i<n; i++) { ... }
+      while(cond) {...}
+      do { ...; } while(cond);
+      if (cond) { ... } else { ... }
+      
+      printf (" Hello World !\ n " );
+      printf(”%d exemple de %f format \n”, v1, v2);
+      scanf(”exemple de %d format %f”, &v1, &v2);
+      
+      return EXIT_SUCCESS ;
+}
+```
 
 ## Source
 
