@@ -15,5 +15,4 @@ Recueil de commandes utiles.
 7. Bash
 8. C
 9. Pr_Ps
-10. Programmation Réseau
-11. Android
+10. Android
