@@ -22,6 +22,13 @@ $ ./hello_world
 Hello World!
 ```
 
+Phase 1 : **Préprocesseur** prépare code source (inclue fichiers, interprète #). `gcc -E mem_alloc.c`
+
+Phase 2 : **Compilateur**  C->binaire dependante processeur (.c -> .o).  `gcc -c mem_alloc.c`
+
+Phase 3 : **Editeur de liens** regroupe fichiers objects et crée un exécutable.  `gcc -o executable mem_alloc.o module2.o [...] moduleN.o `
+
+
 ## Commandes utiles
 
 **GDB**
@@ -110,12 +117,20 @@ position` ou `break position`
 
 Le C est un langage bas niveau (= peu d'abstraction par rapport processeur).
 
-Structure d'un programme:
+> L'interface (truc.h) accessible à d'autres modules pour les prototypes, constantes et types.
+
+> L'implémentation (truc.c) est privé pour les variables et fonctions.
+
+> Le module truc regroupe précédent.
+
+### Structure d'un programme:
 ```
-# include < stdio .h >
+# include < stdio .h >        //biliothèque
 # include < stdlib .h >
 
-
+static int var = 0;     //statique = globale ds fichier
+int var;                //globale
+extern int var;         //externe (globale ailleurs)
 
 struct nom_de_la_structure {      //sous-types hétérogènes
 type1 nom_du_champs1;
@@ -134,7 +149,7 @@ type_element nom_variable[taille] = { e0, e1, e2, ... };
 
 
 int main ( int argc , char ** argv ) {
-      int entier;
+      int entier;             //locale
       unsigned int ent;
       short short;
       long long;
@@ -151,10 +166,77 @@ int main ( int argc , char ** argv ) {
       
       printf (" Hello World !\ n " );
       printf(”%d exemple de %f format \n”, v1, v2);
+      printf("adresse de var: %p\n", &var);                 //adresse var
       scanf(”exemple de %d format %f”, &v1, &v2);
       
       return EXIT_SUCCESS ;
 }
+```
+
+### Pointeur
+
+**Espace mémoire processus**
+
+1. pile (stack) --> var locale + para fonction
+2. tas (heap)   --> var globale
+3. segment code --> code binaire du programme
+
+**Adresse**
+
+1octet d'espace mémoire = 1 adresse
+Adresse mémoire totale = 2^k octets accessible (k=64)
+
+Adresse d'une var = `&var` (type p pointer) donne l'emplacement
+Modifer emplacement mémoire var --> `*var='B'` donc var pointera sur B
+Acceder valeur stocké à son adresse --> `*var`
+
+char a = crée var a type char
+char* a = crée pointeur sur donnée type var
+
+### Biliothèque
+
+Statique : créée édition lien **libmemory.a** 
+```
+ar rcs libmemory.a mem_alloc.o mem_plip.o mem_plop.o
+```
+
+Dynamique : créée exécution **libmemory.so** 
+```
+gcc -shared -o libmemory.so mem_alloc.o mem_plip.o
+mem_plop.o [...]
+
+gcc -c mem_alloc.c -fPIC      //objets
+```
+
+### Makefile
+
+```
+cible : dependance1 dependance2 ... dependanceN
+<TAB>commande
+```
+
+On lance avec `make`
+
+### Fichiers
+
+Primitves d'entrées/sorties bufférisées(=E/S groupés mémoire puis exec perif) (accès contenu fichiers, améliore perf)
+
+```
+FILE*                                                             // type “opaque” désignant un fichier ouvert
+FILE* fopen(char* fichier, char* mode);                           //mode (r=lecture,w=ecriture, r+ ou w+ les2, a ecriture seule (ajout), a+ les 2(ajout)
+int fclose(FILE* f);                                              //termine opé et ferme
+int fprintf(FILE* f, char* format, ...);                          //ecrit ds fichier une char
+size_t fwrite(void* ptr, size_t size, size_t nmemb, FILE* f);     //sizexnmemb octet à l'adresse ptr ds f
+int fscanf(FILE* f, char* format, ...);                           //scanf depuis fichier
+size_t fread(void* ptr, size_t size, size_t nmemb, FILE* f);      //stocke nmembxxsize octet à l'adresse ptr, return nb item lu, si fin fichier atteinte fread<nmemb
+char* fgets(char* s, int size, FILE* f);                           //lit max size carac stocke ds s, s'arrete avant /n ou fin fichier
+```
+
+Le curseur debute à 0 (mode a à la fin fichier), désigne lieu prochaine opé, ++
+
+```
+long ftell(FILE *stream);                                         //position actu, nb octets depuis début du fichier
+int fseek(FILE *f, long offset, int whence);                      //déplace curseur de offset octets depuis whence (début si=SEEK_SET, position actu=SEEK_CUR, fin=SEEK_END)
 ```
 
 ## Source
