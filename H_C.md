@@ -5,12 +5,13 @@
 * Compilation
 * Commandes utiles
 * Cours
- * Structure
- * Pointeur
- * Bibliothèque
- * Makefile
- * Fichiers
- * Processus
+  * Système d'exploitation
+  * Structure
+  * Pointeur
+  * Bibliothèque
+  * Makefile
+  * Fichiers
+  * Processus
 * Sources
 
 ## Installation
@@ -131,6 +132,36 @@ Le C est un langage bas niveau (= peu d'abstraction par rapport processeur).
 
 > Le module truc regroupe précédent.
 
+### Système d'exploitation
+
+Permet cacher complexité matériel, interface virtuelle, protège droit d'accès/mémoire/.../matériel, partage ressources CPU/périphériques
+
+
+Mode utilisateur: certaines instructions interdites, pas accès periphériques, accès mémoire virtuelle processus *bibliothèques (libc, etc.),shell et commandes systèmes*
+
+Mode Kernel/Noyau: accès periph, accès mémoie physique *ordonnanceur, gestion mémoire virtuelle, système de fichiers, drivers périphériques*
+
+Pour y accéder :
+
+1. interruption (processeur, division 0, accès mémoire illicite, carte réseau recoit message, moteur DMA)
+2. appel système (user demande OS un service)
+
+Gestion des différents processus accède mémoire etc --> utilisation sémaphore (=jetons)
+
+1. P (puis-je prendre un jeton / l'attendre)
+2. V (vas-y ajouter un jeton et débloquer processus)
+
+Création  :  `sem_open(”/CLE”, O_CREAT, S_IRWXU, nb_jetons);      //return sem_t* et CLE chaine débute par /`
+
+Ouverture  :  `sem_open(”/CLE”, 0);       //return sem_t`
+
+Destruction  :  `sem_unlink(sem_t* sem)`
+
+Opération P  :  `sem_wait(sem_t* sem)`
+
+Opération V  :  `sem_post(sem_t* sem)`
+
+
 ### Structure d'un programme:
 ```
 # include < stdio .h >        //biliothèque
@@ -192,24 +223,30 @@ int main ( int argc , char ** argv ) {
 **Adresse**
 
 1octet d'espace mémoire = 1 adresse
+
 Adresse mémoire totale = 2^k octets accessible (k=64)
 
 Adresse d'une var = `&var` (type p pointer) donne l'emplacement
+
 Modifer emplacement mémoire var --> `*var='B'` donc var pointera sur B
+
 Acceder valeur stocké à son adresse --> `*var`
 
 char a = crée var a type char
+
 char* a = crée pointeur sur donnée type var
 
 
 ### Biliothèque
 
 Statique : créée édition lien **libmemory.a** 
+
 ```
 ar rcs libmemory.a mem_alloc.o mem_plip.o mem_plop.o
 ```
 
 Dynamique : créée exécution **libmemory.so** 
+
 ```
 gcc -shared -o libmemory.so mem_alloc.o mem_plip.o
 mem_plop.o [...]
@@ -251,10 +288,15 @@ int fseek(FILE *f, long offset, int whence);                      //déplace cur
 ### Processus
 
 PID courant  :  `pid_t getpid();`
+
 PID père  :  `pid_t getppid();`
+
 Création processus shell exe cmd et retourne 0 si ok  :  `int system(const char* cmd);`
+
 Dupliquer courant  :  `pid_t fork();` Créé est le fils, copie sauf PID et PPID, fork retourne PID fils au père et 0 au fils.
+
 Executer une commande  :  `execlp, execvp, execve, execle, execlp, etc.` (famille exec)
+
 Terminaison processus fils :  `pid_t wait(int *status);`  //status=cause décès ou `pid_t waitpid(pid_t pid, int *wstatus, int options);`
 
 ## Source
