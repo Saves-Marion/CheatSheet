@@ -12,6 +12,7 @@
   * Makefile
   * Fichiers
   * Processus
+  * Signal
 * Sources
 
 ## Installation
@@ -298,6 +299,35 @@ Dupliquer courant  :  `pid_t fork();` Créé est le fils, copie sauf PID et PPID
 Executer une commande  :  `execlp, execvp, execve, execle, execlp, etc.` (famille exec)
 
 Terminaison processus fils :  `pid_t wait(int *status);`  //status=cause décès ou `pid_t waitpid(pid_t pid, int *wstatus, int options);`
+
+
+### Signal
+
+1. Com inter-processus
+2. 1<=entier<=31
+3. Recep aléatoire
+4. Routine de reception auto
+
+Envoyer sig à pid  :   `int kill(pid_t pid, int sig); `
+
+Attender  :  `int pause( );`
+
+Programmer alarme (envoir SIGALRM après s sec)  :  `■ int alarm(unsigned int s);`
+
+Recevoir :   `int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact); ` 
+
+* Avec signum spécifie comportement reception
+* sigaction sous forme
+```
+struct sigaction {
+void (* sa_handler )( int );
+void (* sa_sigaction )( int , siginfo_t *, void *);
+sigset_t sa_mask ;
+int sa_flags ;
+void (* sa_restorer )( void );
+};
+```
+* sa_handler pointeur sur fonction à appeler
 
 ## Source
 
