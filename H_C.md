@@ -264,6 +264,54 @@ cible : dependance1 dependance2 ... dependanceN
 
 On lance avec `make`
 
+A adapter selon besoin:
+
+```
+# In order to reuse this Makefile
+#    Modify the project name => modify the binary name
+#    Add all the .o dependencies in OBJ
+#    That's all folk :)
+
+PROJECT=main
+
+BIN=$(PROJECT)
+OBJ=main.o
+
+# compilation flags
+CFLAGS=-Wall -Werror -g
+# link flags
+LDFLAGS=
+CC=gcc
+
+Echo=@echo [$(PROJECT)]:
+
+ifndef VERBOSE
+  Verb := @
+endif
+
+# Tells make that 'all' and 'clean' are "virtual" targets (that does not generate a file)
+.PHONY: all clean
+
+all: $(BIN)
+
+$(BIN): $(OBJ)
+	$(Echo) Linking $@
+	$(Verb) $(CC) $(LDFLAGS) -o $@ $^
+
+# generic rule: to generate foo.o, we need foo.c
+%.o: %.c
+	$(Echo) Compiling $<
+	$(Verb) $(CC) $(CFLAGS) -c "$<" -o "$@"
+
+# you can add specific compilation rules here
+
+
+# you can invoke "make clean" to delete all the generated files
+clean:
+	$(Echo) Cleaning compilation files
+	$(Verb) rm -f $(OBJ) $(BIN)
+```
+
 ### Fichiers
 
 Primitves d'entrées/sorties bufférisées(=E/S groupés mémoire puis exec perif) (accès contenu fichiers, améliore perf)
