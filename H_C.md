@@ -5,6 +5,12 @@
 * Compilation
 * Commandes utiles
 * Cours
+ * Structure
+ * Pointeur
+ * Bibliothèque
+ * Makefile
+ * Fichiers
+ * Processus
 * Sources
 
 ## Installation
@@ -30,6 +36,8 @@ Phase 3 : **Editeur de liens** regroupe fichiers objects et crée un exécutable
 
 
 ## Commandes utiles
+
+GDB permet le debugging, seul pre-requis compiler avec -g
 
 **GDB**
 
@@ -193,6 +201,7 @@ Acceder valeur stocké à son adresse --> `*var`
 char a = crée var a type char
 char* a = crée pointeur sur donnée type var
 
+
 ### Biliothèque
 
 Statique : créée édition lien **libmemory.a** 
@@ -238,6 +247,15 @@ Le curseur debute à 0 (mode a à la fin fichier), désigne lieu prochaine opé,
 long ftell(FILE *stream);                                         //position actu, nb octets depuis début du fichier
 int fseek(FILE *f, long offset, int whence);                      //déplace curseur de offset octets depuis whence (début si=SEEK_SET, position actu=SEEK_CUR, fin=SEEK_END)
 ```
+
+### Processus
+
+PID courant  :  `pid_t getpid();`
+PID père  :  `pid_t getppid();`
+Création processus shell exe cmd et retourne 0 si ok  :  `int system(const char* cmd);`
+Dupliquer courant  :  `pid_t fork();` Créé est le fils, copie sauf PID et PPID, fork retourne PID fils au père et 0 au fils.
+Executer une commande  :  `execlp, execvp, execve, execle, execlp, etc.` (famille exec)
+Terminaison processus fils :  `pid_t wait(int *status);`  //status=cause décès ou `pid_t waitpid(pid_t pid, int *wstatus, int options);`
 
 ## Source
 
