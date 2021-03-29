@@ -34,6 +34,8 @@ postgres -D /usr/local/pgsql/data //demarrer serveur
 django-admin startprojet monprojet
 
 ./manage.py runserver //localhost:8000
+
+python manage.py createsuperuser    //acceder admin
 ```
 
 ## Créer une base de données
