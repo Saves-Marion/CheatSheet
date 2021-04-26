@@ -38,6 +38,11 @@ Phase 2 : **Compilateur**  C->binaire dependante processeur (.c -> .o).  `gcc -c
 
 Phase 3 : **Editeur de liens** regroupe fichiers objects et crée un exécutable.  `gcc -o executable mem_alloc.o module2.o [...] moduleN.o `
 
+*-DN=7 change valeur N DEFINE
+
+nm nom.o permet d'afficher variable,l'état B globale non ini (b sinon), U undefined
+
+-I../tab definir lieu fichier h   et  -ltab/-lplop -L../tab pour definir lieu bibliothèque*
 
 ## Commandes utiles
 
@@ -170,6 +175,11 @@ Opération V  :  `sem_post(sem_t* sem)`
 # include < stdio .h >        //biliothèque
 # include < stdlib .h >
 
+#ifndef N
+#define N 13
+#endif
+
+
 static int var = 0;     //statique = globale ds fichier
 int var;                //globale
 extern int var;         //externe (globale ailleurs)
@@ -210,6 +220,7 @@ int main ( int argc , char ** argv ) {
       printf(”%d exemple de %f format \n”, v1, v2);
       printf("adresse de var: %p\n", &var);                 //adresse var
       scanf(”exemple de %d format %f”, &v1, &v2);
+      sprintf(s,message,arg);
       
       return EXIT_SUCCESS ;
 }
@@ -314,6 +325,19 @@ clean:
 	$(Verb) rm -f $(OBJ) $(BIN)
 ```
 
+```
+CC=gcc
+CFLAGS=-Wall -Werror
+
+all:main
+
+main:main.o foo.o LIBTAB
+	$(CC) -o main main.o foo.o -L../libtab -ltab
+
+clean:
+	rm -f main *.o
+```
+
 ### Fichiers
 
 Primitves d'entrées/sorties bufférisées(=E/S groupés mémoire puis exec perif) (accès contenu fichiers, améliore perf)
@@ -406,6 +430,8 @@ Lock=Semaphore
 void * malloc( size_t memorySize );
 
 Cette fonction permet d'allouer un bloc de mémoire dans le tas (le heap en anglais). Attention : la mémoire allouée dynamiquement n'est pas automatiquement relachée. Il faudra donc, après utilisation, libérer ce bloc de mémoire via un appel à la fonction free.
+
+avoir la langue : getenv("LANG")
 
 ## Source
 
