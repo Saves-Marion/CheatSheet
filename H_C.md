@@ -13,6 +13,8 @@
   * Fichiers
   * Processus
   * Signal
+  * String
+  * Autre
 * Sources
 
 ## Installation
@@ -376,6 +378,34 @@ void (* sa_restorer )( void );
 };
 ```
 * sa_handler pointeur sur fonction à appeler
+
+## String
+
+**strsep:  strsep - Extraction de mots d'une chaîne**
+
+Si stringp est NULL, la fonction strsep() renvoie NULL et ne fait rien d'autre.  Dans  le
+       cas  contraire,  cette  fonction recherche le premier élément lexical (token) de la chaîne
+       *stringp qui est délimité par l'un des octets de la  chaîne  delim.  Le  mot  renvoyé  est
+       terminé  en  écrasant  le séparateur avec un octet nul (« \0 ») et *stringp est mis à jour
+       pour pointer après le mot. Dans le cas où aucun séparateur n'est trouvé, l'élément extrait
+       est constitué de toute la chaîne *stringp, et *stringp vaut NULL.
+
+**strcmp**
+
+Trois cas distincts doivent être considérés. Soit les deux chaînes sont égales : dans ce cas, une valeur nulle sera retournée. Soit la première chaîne est plus petite que la seconde (dans l'ordre lexicographique) : dans ce cas, une valeur négative sera retournée. Soit la première chaîne est plus grande que la seconde : dans ce dernier cas, une valeur positive sera renvoyée. Dans tous les cas, la valeur absolue indiquera la position du premier caractères permettant de produire le résultat.
+
+**strcpy**
+
+Cette fonction permet de copier le contenu d'une chaîne de caractères dans une autre. Bien entendu, la chaîne de caractère devant recevoir le contenu de l'autre doit être allouée de manière à être suffisament grande pour contenir tout le texte.
+
+
+## Autre
+
+Lock=Semaphore
+
+void * malloc( size_t memorySize );
+
+Cette fonction permet d'allouer un bloc de mémoire dans le tas (le heap en anglais). Attention : la mémoire allouée dynamiquement n'est pas automatiquement relachée. Il faudra donc, après utilisation, libérer ce bloc de mémoire via un appel à la fonction free.
 
 ## Source
 
